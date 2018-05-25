@@ -5,26 +5,59 @@ import { findParent } from 'app/utils/DomUtils';
 
 export default class Dropdown extends React.Component {
     static propTypes = {
+<<<<<<< HEAD
         selected: React.PropTypes.string,
+=======
+>>>>>>> remove rfc from vote component
         children: React.PropTypes.object,
         className: React.PropTypes.string,
         title: React.PropTypes.oneOfType([
             React.PropTypes.string,
             React.PropTypes.object,
+<<<<<<< HEAD
         ]),
         href: React.PropTypes.string,
         onHide: React.PropTypes.func.isRequired,
         show: React.PropTypes.bool,
     };
 
+=======
+        ]).isRequired,
+        href: React.PropTypes.string,
+        onHide: React.PropTypes.func,
+        onShow: React.PropTypes.func,
+        show: React.PropTypes.bool,
+    };
+
+    static defaultProps = {
+        onHide: () => null,
+        onShow: () => null,
+        show: false,
+        className: 'dropdown-comp',
+        href: null,
+    };
+
+>>>>>>> remove rfc from vote component
     constructor(props) {
         super(props);
         this.state = {
             shown: false,
+<<<<<<< HEAD
             selected: props.selected,
         };
     }
 
+=======
+        };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.show !== this.state.shown) {
+            this.setState({ shown: nextProps.show });
+        }
+    }
+
+>>>>>>> remove rfc from vote component
     componentWillUnmount() {
         document.removeEventListener('click', this.hide);
     }
@@ -39,6 +72,10 @@ export default class Dropdown extends React.Component {
     show = e => {
         e.preventDefault();
         this.setState({ shown: true });
+<<<<<<< HEAD
+=======
+        this.props.onShow();
+>>>>>>> remove rfc from vote component
         document.addEventListener('click', this.hide);
     };
 
