@@ -51,6 +51,17 @@ const mockGlobal = Map({
 
 const mockUser = Map({ current: Map({ username: 'Janice' }) });
 
+const voteTestObj = fromJS({
+    stats: {
+        total_votes: 1,
+    },
+    max_accepted_payout: '999999 SBD',
+    percent_steem_dollars: 0,
+    pending_payout_value: '10 SBD',
+    cashout_time: '2018-03-30T10:00:00Z',
+});
+
+// If user is below the threshold, no prompt for voting weight appears, their vote has weight X, vote action is dispatched.
 describe('Voting', () => {
     it('should render nothing if flag prop is true and user is not logged in.', () => {
         const mockStore = configureMockStore()({
@@ -341,4 +352,5 @@ describe('Voting', () => {
             '(2.50 SBD, 2.50 STEEM, 5.00 SP)'
         );
     });
+    it('should show the vote slider ');
 });
